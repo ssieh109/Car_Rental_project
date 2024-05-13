@@ -6,8 +6,8 @@ public class Main {
     public static void main (String[] args){
 
         RentalAgency agency = new RentalAgency();
-        agency.addVehicle(new Cars("Toyota", "Camry", 2020, 20000, 50, 4));
-        agency.addVehicle(new Cars("Ford", "Fusion", 2019, 15000, 60, 4));
+        agency.addVehicle(new Cars("Honda", "Civic", 2009, 20000, 50, 4));
+        agency.addVehicle(new Cars("Ford", "Fusion", 2013, 15000, 60, 4));
 
 
         Scanner sc = new Scanner(System.in);
@@ -30,7 +30,10 @@ public class Main {
         if (rental != null) {
             System.out.println("Rental details:");
             System.out.println("Vehicle: " + rental.getVehicle().getDescription());
-            System.out.println("Total cost: $" + rental.calculateTotalCost());
+            double finalBill = BillingProcessor.calculateFinalBill(rental);
+            System.out.println("Total cost: $"+ String.format("%.2f", finalBill));
+            BillingProcessor.printBill(rental);
+            BillingProcessor.processPayment(finalBill);
         } else {
             System.out.println("Sorry, the selected vehicle is not available.");
         }

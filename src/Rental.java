@@ -18,4 +18,8 @@
      public Vehicle getVehicle() {
          return vehicle;
      }
+
+     public int getDays() {
+         return days;
+     }
  }
